@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OkHttp &amp; GSON</string>
+    <string name="app_name">Retrofit &amp; Moshi</string>
 
     <string name="this_is_box">This is a %1$s box!</string>
     <string name="box_title">%1$s box</string>

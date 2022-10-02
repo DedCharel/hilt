@@ -11,8 +11,11 @@ import ua.cn.stu.http.app.model.accounts.entities.Account
 import ua.cn.stu.http.app.model.boxes.entities.Box
 import ua.cn.stu.http.app.model.boxes.entities.BoxAndSettings
 import ua.cn.stu.http.app.model.boxes.entities.BoxesFilter
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class BoxesRepository(
+@Singleton
+class BoxesRepository @Inject constructor(
     private val accountsRepository: AccountsRepository,
     private val boxesSource: BoxesSource
 ) {

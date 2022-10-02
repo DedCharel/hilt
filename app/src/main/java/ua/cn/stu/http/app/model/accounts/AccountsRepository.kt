@@ -6,8 +6,11 @@ import ua.cn.stu.http.app.utils.async.LazyFlowSubject
 import ua.cn.stu.http.app.model.accounts.entities.Account
 import ua.cn.stu.http.app.model.accounts.entities.SignUpData
 import ua.cn.stu.http.app.model.settings.AppSettings
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class AccountsRepository(
+@Singleton
+class AccountsRepository @Inject constructor(
     private val accountsSource: AccountsSource,
     private val appSettings: AppSettings
 ) {

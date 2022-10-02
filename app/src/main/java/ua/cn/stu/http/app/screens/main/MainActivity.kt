@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.ActivityMainBinding
 import ua.cn.stu.http.app.screens.main.tabs.TabsFragment
@@ -19,6 +20,7 @@ import java.util.regex.Pattern
 /**
  * Container for all screens in the app.
  */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     // view-model is used for observing username to be displayed in the toolbar
@@ -28,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     private var navController: NavController? = null
 
     private val topLevelDestinations = setOf(getTabsDestination(), getSignInDestination())
+
+
 
     // fragment listener is sued for tracking current nav controller
     private val fragmentListener = object : FragmentManager.FragmentLifecycleCallbacks() {
