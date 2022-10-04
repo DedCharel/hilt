@@ -3,22 +3,23 @@ package ua.cn.stu.http.app.screens.main.auth
 import androidx.annotation.StringRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import ua.cn.stu.http.app.R
-import ua.cn.stu.http.app.screens.base.BaseViewModel
-import ua.cn.stu.http.app.utils.*
-import ua.cn.stu.http.app.utils.logger.LogCatLogger
-import ua.cn.stu.http.app.Singletons
 import ua.cn.stu.http.app.model.AccountAlreadyExistsException
 import ua.cn.stu.http.app.model.EmptyFieldException
 import ua.cn.stu.http.app.model.Field
 import ua.cn.stu.http.app.model.PasswordMismatchException
 import ua.cn.stu.http.app.model.accounts.AccountsRepository
 import ua.cn.stu.http.app.model.accounts.entities.SignUpData
+import ua.cn.stu.http.app.screens.base.BaseViewModel
+import ua.cn.stu.http.app.utils.*
 import ua.cn.stu.http.app.utils.logger.Logger
+import javax.inject.Inject
 
-class SignUpViewModel(
-    accountsRepository: AccountsRepository = Singletons.accountsRepository,
-    logger: Logger = LogCatLogger
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
+    accountsRepository: AccountsRepository,
+    logger: Logger
 ) : BaseViewModel(accountsRepository, logger) {
 
     private val _goBackEvent = MutableUnitLiveEvent()

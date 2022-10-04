@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.FragmentSplashBinding
 import ua.cn.stu.http.app.screens.main.MainActivity
 import ua.cn.stu.http.app.screens.main.MainActivityArgs
 import ua.cn.stu.http.app.utils.observeEvent
 
+@AndroidEntryPoint
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private lateinit var binding: FragmentSplashBinding

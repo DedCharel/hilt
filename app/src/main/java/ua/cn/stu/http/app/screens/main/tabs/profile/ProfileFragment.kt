@@ -3,6 +3,7 @@ package ua.cn.stu.http.app.screens.main.tabs.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.model.accounts.entities.Account
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.FragmentProfileBinding
@@ -12,6 +13,7 @@ import ua.cn.stu.http.app.utils.observeResults
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
     override val viewModel by viewModels<ProfileViewModel>()

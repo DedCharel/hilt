@@ -5,11 +5,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.FragmentEditProfileBinding
 import ua.cn.stu.http.app.screens.base.BaseFragment
 import ua.cn.stu.http.app.utils.observeEvent
 
+@AndroidEntryPoint
 class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile) {
 
     override val viewModel by viewModels<EditProfileViewModel>()

@@ -8,12 +8,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.model.accounts.entities.SignUpData
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.FragmentSignUpBinding
 import ua.cn.stu.http.app.screens.base.BaseFragment
 import ua.cn.stu.http.app.utils.observeEvent
 
+@AndroidEntryPoint
 class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
 
     override val viewModel by viewModels<SignUpViewModel>()

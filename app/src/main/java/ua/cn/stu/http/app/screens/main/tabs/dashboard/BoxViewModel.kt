@@ -1,30 +1,35 @@
 package ua.cn.stu.http.app.screens.main.tabs.dashboard
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.collect
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import ua.cn.stu.http.app.screens.base.BaseViewModel
-import ua.cn.stu.http.app.utils.MutableLiveEvent
-import ua.cn.stu.http.app.utils.publishEvent
-import ua.cn.stu.http.app.utils.share
-import ua.cn.stu.http.app.utils.logger.LogCatLogger
-import ua.cn.stu.http.app.Singletons
 import ua.cn.stu.http.app.model.Success
 import ua.cn.stu.http.app.model.accounts.AccountsRepository
 import ua.cn.stu.http.app.model.boxes.BoxesRepository
 import ua.cn.stu.http.app.model.boxes.entities.BoxesFilter
+import ua.cn.stu.http.app.screens.base.BaseViewModel
+import ua.cn.stu.http.app.utils.MutableLiveEvent
 import ua.cn.stu.http.app.utils.logger.Logger
+import ua.cn.stu.http.app.utils.publishEvent
+import ua.cn.stu.http.app.utils.share
+import javax.inject.Inject
 
-class BoxViewModel(
-    private val boxId: Long,
-    private val boxesRepository: BoxesRepository = Singletons.boxesRepository,
-    accountsRepository: AccountsRepository = Singletons.accountsRepository,
-    logger: Logger = LogCatLogger
+@HiltViewModel
+class BoxViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
+    private val boxesRepository: BoxesRepository,
+    accountsRepository: AccountsRepository,
+    logger: Logger
 ) : BaseViewModel(accountsRepository, logger) {
 
     private val _shouldExitEvent = MutableLiveEvent<Boolean>()
     val shouldExitEvent = _shouldExitEvent.share()
+
+    private val navArgs = BoxFragmentArgs
+        .fromSavedStateHandle(savedStateHandle)
+    private  val boxId = navArgs.boxId
 
     init {
         viewModelScope.launch {

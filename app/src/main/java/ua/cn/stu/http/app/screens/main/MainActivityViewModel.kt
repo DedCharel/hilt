@@ -3,14 +3,15 @@ package ua.cn.stu.http.app.screens.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.collect
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import ua.cn.stu.http.app.utils.share
-import ua.cn.stu.http.app.Singletons
 import ua.cn.stu.http.app.model.accounts.AccountsRepository
+import ua.cn.stu.http.app.utils.share
+import javax.inject.Inject
 
-class MainActivityViewModel(
-    private val accountsRepository: AccountsRepository = Singletons.accountsRepository
+@HiltViewModel
+class MainActivityViewModel @Inject constructor(
+    private val accountsRepository: AccountsRepository
 ) : ViewModel() {
 
     private val _username = MutableLiveData<String>()

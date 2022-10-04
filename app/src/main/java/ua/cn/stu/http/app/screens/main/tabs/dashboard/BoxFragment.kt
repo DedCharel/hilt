@@ -2,8 +2,10 @@ package ua.cn.stu.http.app.screens.main.tabs.dashboard
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.FragmentBoxBinding
 import ua.cn.stu.http.app.screens.base.BaseFragment
@@ -11,9 +13,10 @@ import ua.cn.stu.http.app.utils.observeEvent
 import ua.cn.stu.http.app.utils.viewModelCreator
 import ua.cn.stu.http.app.views.DashboardItemView
 
+@AndroidEntryPoint
 class BoxFragment : BaseFragment(R.layout.fragment_box) {
 
-    override val viewModel by viewModelCreator { BoxViewModel(getBoxId()) }
+    override val viewModel by viewModels<BoxViewModel>()
 
     private lateinit var binding: FragmentBoxBinding
 

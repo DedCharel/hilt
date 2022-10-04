@@ -5,6 +5,7 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.model.boxes.entities.Box
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.FragmentDashboardBinding
@@ -12,6 +13,7 @@ import ua.cn.stu.http.app.screens.base.BaseFragment
 import ua.cn.stu.http.app.utils.observeResults
 import ua.cn.stu.http.app.views.DashboardItemView
 
+@AndroidEntryPoint
 class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
     override val viewModel by viewModels<DashboardViewModel>()

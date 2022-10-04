@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.FragmentSettingsBinding
 import ua.cn.stu.http.app.screens.base.BaseFragment
 import ua.cn.stu.http.app.utils.observeResults
 
+@AndroidEntryPoint
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     override val viewModel by viewModels<SettingsViewModel>()

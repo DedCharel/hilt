@@ -14,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import ua.cn.stu.http.app.R
 import ua.cn.stu.http.app.databinding.ActivityMainBinding
 import ua.cn.stu.http.app.screens.main.tabs.TabsFragment
-import ua.cn.stu.http.app.Singletons
 import java.util.regex.Pattern
 
 /**
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Singletons.init(applicationContext)
+       // Singletons.init(applicationContext)
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         setSupportActionBar(binding.toolbar)
