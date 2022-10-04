@@ -12,11 +12,15 @@ import ua.cn.stu.http.app.screens.base.BaseFragment
 import ua.cn.stu.http.app.utils.observeEvent
 import ua.cn.stu.http.app.utils.viewModelCreator
 import ua.cn.stu.http.app.views.DashboardItemView
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class BoxFragment : BaseFragment(R.layout.fragment_box) {
 
-    override val viewModel by viewModels<BoxViewModel>()
+    @Inject lateinit var factory: BoxViewModel.Factory
+    override val viewModel by viewModelCreator {
+        factory.create(args.boxId)
+    }
 
     private lateinit var binding: FragmentBoxBinding
 

@@ -2,6 +2,9 @@ package ua.cn.stu.http.app.screens.main.tabs.dashboard
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -16,9 +19,9 @@ import ua.cn.stu.http.app.utils.publishEvent
 import ua.cn.stu.http.app.utils.share
 import javax.inject.Inject
 
-@HiltViewModel
-class BoxViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
+
+class BoxViewModel @AssistedInject constructor(
+    @Assisted boxId: Long,
     private val boxesRepository: BoxesRepository,
     accountsRepository: AccountsRepository,
     logger: Logger
@@ -27,9 +30,6 @@ class BoxViewModel @Inject constructor(
     private val _shouldExitEvent = MutableLiveEvent<Boolean>()
     val shouldExitEvent = _shouldExitEvent.share()
 
-    private val navArgs = BoxFragmentArgs
-        .fromSavedStateHandle(savedStateHandle)
-    private  val boxId = navArgs.boxId
 
     init {
         viewModelScope.launch {
@@ -39,5 +39,10 @@ class BoxViewModel @Inject constructor(
                     _shouldExitEvent.publishEvent(res is Success && res.value == null)
                 }
         }
+    }
+
+    @AssistedFactory
+    interface Factory{
+        fun create(boxId: Long): BoxViewModel
     }
 }
